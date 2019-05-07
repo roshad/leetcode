@@ -1,37 +1,34 @@
-function groupAnagrams(strs) {
-    const ht = {}, ret = []
-
+//88ms
+var groupAnagrams = function (strs) {
+    const
+        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103],
+        ret = [],
+        kv = {}
     for (let str of strs) {
-        let key = 0
-        const sLen = str.length
+        let key = 1
+        for (let cha of str) key *= primes[cha.charCodeAt(0)-"a".charCodeAt(0)]
 
-        for (let i = 0; i < sLen; i++) {//通过放大数的差距来避免loop，很精妙
-            const charCode = str.charCodeAt(i);
-            key += charCode ** 4;
-        }
-        if (ht.hasOwnProperty(key)) ht[key].push(str)
+        if (kv.hasOwnProperty(key)) kv[key].push(str)
         else {
-            const anas = [str];
-            ht[key] = anas;
-            ret.push(ans);
+            const arr_Of_Ana = [str]
+            kv[key] = arr_Of_Ana
+            ret.push(arr_Of_Ana)
         }
+
     }
     return ret
 }
-
+//115ms
 var groupAnagrams = function (strs) {
-    let hm = {}, ret = []
+    const 
+        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103],
+        ht ={}
 
-    for (let str of strs) {
-        let key = 0
-        for (let cha of str) key += cha.charCodeAt(0) ** 4
-
-        if (hm.hasOwnProperty(key)) hm[key].push(str)
-        else {
-            const arr_Of_Ana = [str]
-            hm[key] = arr_Of_Ana
-            ret.push(arr_Of_Ana)
-        }
+    for (const str of strs){
+        let hash = 1
+        for (const cha of str) hash*=primes[cha.charCodeAt(0)-"a".charCodeAt(0)]
+        if (ht.hasOwnProperty(hash)) ht[hash].push(str)
+        else ht[hash] = [str]
     }
-    return ret
-};
+    return Object.values(ht)
+}
