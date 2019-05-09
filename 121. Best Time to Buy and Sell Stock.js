@@ -1,13 +1,8 @@
 function maxProfit(prices) {
 
-    let max = 0,buy_price = prices[0],cur_profit
-    for (let i = 0; i < prices.length; ++i) {
-        if (prices[i] < buy_price) buy_price = prices[i] 
-
-        else {
-            cur_profit = prices[i] - buy_price;
-            if (cur_profit > max) max = cur_profit;
-        }
+    for (var index = 0, ret = 0; index < prices.length; index++) {
+        const diff = prices[index] > prices[index - 1]
+        if (diff > 0) ret += diff
     }
-    return max;
+    return ret
 }
