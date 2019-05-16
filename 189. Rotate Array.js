@@ -1,33 +1,33 @@
-function rotate(nums, k){
-    let 
+function rotate(nums, k) {
+    let
         i_sta = -1,
         len = nums.length,
-        count=0
+        count = 0
     k %= len
-    while (count!=len){
+    while (count != len) {
         i_sta++
-        let 
-            i_cur=i_sta,
-            holder= nums[i_cur]
+        let
+            i_cur = i_sta,
+            holder = nums[i_cur]
         do {
-            let i_nex = (i_cur+k)%len;            
-            [holder,nums[i_nex]] = [nums[i_nex],holder]
-            i_cur=i_nex
+            let i_nex = (i_cur + k) % len;
+            [holder, nums[i_nex]] = [nums[i_nex], holder]
+            i_cur = i_nex
             count++
-        } while (i_cur!=i_sta)
-    } 
+        } while (i_cur != i_sta)
+    }
 }
 
-function rotate(nums, k){
+function rotate(nums, k) {
     k %= nums.length
     reverse(0, nums.length - 1)
-    reverse(0,k-1)
-    reverse(k,nums.length - 1)
+    reverse(0, k - 1)
+    reverse(k, nums.length - 1)
 
-    function reverse(sta,end){        
-        while (sta<end){            
-            [nums[sta],nums[end]] = [nums[end],nums[sta]]            
-            sta++;end--
+    function reverse(sta, end) {
+        while (sta < end) {
+            [nums[sta], nums[end]] = [nums[end], nums[sta]]
+            sta++; end--
         }
     }
 }
