@@ -1,4 +1,2 @@
 //应用set
-var containsDuplicate = function(nums) {
-    return new Set(nums).size !== nums.length;
-};
+var containsDuplicate = (nums) =>new Set(nums).size !== nums.length;
