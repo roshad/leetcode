@@ -25,15 +25,13 @@ var moveZeroes = function (nums) {
     //console.log(nums)
 };
 //2
-var moveZeroes = function(nums) {
-    let n = 0;
-    for(let i = 0; i < nums.length; i++){
-        if(nums[i] !== 0){
-            nums[n] = nums[i];
-            n++;
+function moveZeroes(nums){
+    let no0_i=0;
+    for (let tra_i=0;tra_i<nums.length;tra_i++){
+        if(tra_i!=0){
+            nums[no0_i]=nums[tra_i]
+            no0_i++
         }
     }
-    for(let i = n; i < nums.length; i++){
-        nums[i] = 0;
-    }
-};
+    for (;no0_i<nums.length;no0_i++) nums[no0_i]=0
+}
