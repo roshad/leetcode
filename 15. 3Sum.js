@@ -8,11 +8,11 @@ function threeSum(nums) {
 		len = nums.length,
 		ret = []
 
-	for (let il = 0, im = il+1, ir = len - 1;
-		il < len - 2, im < ir;) {		
-			
+	for (let il = 0, im = il + 1, ir = len - 1;
+		il < len - 2, im < ir;) {
+
 		const sum = nums[il] + nums[im] + nums[ir]
-		
+
 		if (sum == 0) {
 			ret.push([nums[il], nums[im], nums[ir]])
 			do { im++ } while (nums[im] === nums[im - 1]);
