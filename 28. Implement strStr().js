@@ -22,12 +22,9 @@ var strStr = function (haystack, needle) {
 };
 
 var strStr = function (haystack, needle) {
-    let n_l = needle.length, h_l = haystack.length
-    if (n_l == 0) return 0;
-    if (h_l < n_l) return -1;
-
-    for (var i = 0; i <= h_l - n_l; i++) {
-        if (haystack.slice(i, i + n_l) === needle) return i;
-    }
-    return -1; 
+    if (!needle)return 0
+    const hlen=haystack.length,nlen=needle.length
+    for (let i=0;i<=hlen-nlen;i++)
+        if (haystack.slice(i,i+nlen)===needle)return i
+    return -1
 }
