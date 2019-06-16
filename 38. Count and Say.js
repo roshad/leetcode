@@ -3,7 +3,9 @@ var countAndSay = function (n) {
     while (n > 1) {
         let next_num = ''
         for (let ind = 0; ind < cur_num.length;) {
-            let cur_digit = cur_num[ind], cur_digit_amount = 1
+            let
+                cur_digit = cur_num[ind],
+                cur_digit_amount = 1
 
             while (cur_num[ind] === cur_num[++ind]) { cur_digit_amount++ }
 

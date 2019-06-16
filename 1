@@ -1,0 +1,16 @@
+var countAndSay = function(n) {
+    let num='1'
+    while (n>1){
+        let tem=''
+        for (let ind=0;ind<num.length;){
+            let digit=num[ind],amount=0
+            while (digit===num[ind]){ amount++;ind++}
+            
+            tem+=amount+digit   
+            
+        }
+        num=tem
+        n--
+    }
+    return num
+}
