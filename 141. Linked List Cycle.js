@@ -9,18 +9,13 @@ var hasCycle = function (head) {
     return false;
 };
 
-
 var hasCycle = function (head) {
-    if (!head || !head.next) return false
-
-    let 
-        slow = head,
-        fast = head.next;
-    while (slow != fast) {
-        if (!fast || !fast.next) return false;
-
-        slow = slow.next;
-        fast = fast.next.next;
+    let fast=head,slow=head
+    do {
+        if (!fast||!fast.next) return false
+        fast=fast.next.next
+        slow=slow.next
     }
-    return true;
-};
+    while (fast!=slow)
+    return true
+}
