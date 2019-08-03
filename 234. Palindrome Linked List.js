@@ -1,3 +1,4 @@
+//转化为str
 var isPalindrome = function(head) {
     let forward_str = (backward_str = "");
     while (head) {

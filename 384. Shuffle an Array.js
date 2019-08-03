@@ -1,25 +1,27 @@
 var Solution = function(nums) {
-    this.initial = nums.slice()
-    this.nums = nums;
+    this.ori = nums;
 };
 
-/**
- * Resets the array to its original configuration and return it.
- * @return {number[]}
- */
 Solution.prototype.reset = function() {
-    return this.initial;
+    return this.ori;
 };
-
-/**
- * Returns a random shuffling of the array.
- * @return {number[]}
- */
+// n*n
 Solution.prototype.shuffle = function() {
-    let len = this.nums.length,picked,nums=this.nums
-    for (let i;i<this.nums.length;i++){
-        picked = Math.floor(Math.random() * (len-i))+i;
-        [nums[i],nums[picked]]=[nums[picked],nums[i]]
+    const cop = this.ori.slice(),
+        ret = [];
+    while (cop.length) {
+        ret.push(cop.splice(Math.floor(Math.random() * cop.length), 1));
     }
-    return nums
+    return ret;
+};
+// n
+Solution.prototype.shuffle = function() {
+    const len = this.ori.length,
+        nums = this.ori.slice()
+    let picked;
+    for (let i = 0; i < len - 1; i++) {
+        picked = Math.floor(Math.random() * (len - i)) + i;
+        [nums[i], nums[picked]] = [nums[picked], nums[i]];
+    }
+    return nums;
 };
