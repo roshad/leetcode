@@ -9,3 +9,12 @@ var merge = function(nums1, len1, nums2, len2) {
     }
 };
 
+
+var fizzBuzz = function(n) {
+    let ret=[]
+    for (let i=1;i<=n;i++){
+        const fb= (n % 3 == 0 ? "Fizz" : "") + (n % 5 == 0 ? "Buzz" : "")
+        ret.push(fb?fb:i+'')
+    }
+    return ret
+};

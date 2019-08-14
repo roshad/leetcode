@@ -15,6 +15,3 @@ MinStack.prototype.pop = function () {
 MinStack.prototype.top = () => this.stack[this.stack.length - 1]
 
 MinStack.prototype.getMin = () => this.min[this.min.length - 1]
-
-
-
