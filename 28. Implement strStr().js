@@ -27,7 +27,7 @@ var strStr = function(haystack, needle) {
         if (haystack.slice(i, i + nlen) === needle) return i;
     return -1;
 };
-
+//3
 function strStr(haystack, needle) {
     if (!needle.length) return 0;
 
@@ -37,14 +37,14 @@ function strStr(haystack, needle) {
     const move = {};
     for (let i = 0; i < nee_len; i++) move[needle[i]] = nee_len - i;
     while (nee_head_ind <= hay_len - nee_len) {
-        for (let next_nee_cha_ind = 0; ; next_nee_cha_ind++) {
+        for (let nee_tra_ind = 0; ; nee_tra_ind++) {
             if (
-                haystack[nee_head_ind + next_nee_cha_ind] !=
-                needle[next_nee_cha_ind]
+                haystack[nee_head_ind + nee_tra_ind] !=
+                needle[nee_tra_ind]
             )
                 break;
 
-            if (next_nee_cha_ind == nee_len) return nee_head_ind;
+            if (nee_tra_ind == nee_len) return nee_head_ind;
         }
         nee_head_ind += move[haystack[nee_head_ind + nee_len]] || nee_len;
     }

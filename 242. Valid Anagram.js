@@ -11,9 +11,10 @@ var isAnagram = function (s, t) {
 }
 //2
 var isAnagram = function (s, t) {
-    if (s.length != t.length) return false
-    let aa = {}
-    for (let cha of s) aa[cha] = aa[cha] + 1 || 1
-    for (let cha of t) if (!(--aa[cha] > -1)) return false
-    return true
-};
+    if (s.length!=t.length) return false
+    const kv = {}
+    for (let cha of s) kv[cha]=kv[cha]+1||1
+    for (let cha of t) 
+        if (!(--kv[cha]>=0)) return false
+    return true 
+}
