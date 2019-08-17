@@ -15,6 +15,6 @@ var isAnagram = function (s, t) {
     const kv = {}
     for (let cha of s) kv[cha]=kv[cha]+1||1
     for (let cha of t) 
-        if (!(--kv[cha]>=0)) return false
+        if (!(--kv[cha]>=0)) return false//!应对后有前无cha
     return true 
 }
