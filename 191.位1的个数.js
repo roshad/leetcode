@@ -1,6 +1,5 @@
 var hammingWeight = function(n) {
-    let ret =0
-    
+    let ret =0    
     while(n){        
         if (n%2) ret++
         n=Math.floor(n/2)
@@ -9,8 +8,7 @@ var hammingWeight = function(n) {
 };
 // bit
 var hammingWeight = function(n) {
-    let ret =0
-    
+    let ret =0    
     while(n){        
         ret++
         n&=n-1
