@@ -1,20 +1,17 @@
-function setZeroes(matrix) {
-    const 
-        clen = matrix.length,
-        rlen = matrix[0].length
-    let c0 = false
-
-    for (let yi = 0; yi < clen.length; yi++) {
-        if (matrix[yi][0]) c0=true
-        for (let xi = 1; xi < rlen.length; xi++) {            
-            if (matrix[yi][xi]==0) matrix[yi][0]=matrix[0][xi]=0
-        }        
-    }
-
-    for (let yi = clen.length-1; yi >-1; yi--) {
-        for (let xi = rlen.length-1; xi >0; xi--) {
-            if (matrix[yi][0]==0||matrix[0][xi]==0)matrix[yi][xi]=0
+var threeSum = function(nums) {
+    nums.sort((a, b) => a - b);
+    let ret = [],
+        len = nums.length;
+    for (let il = 0; il < len - 2; il++) {
+        for (im = il+1, ir = len - 1;im<ir ; ) {
+            let sum = nums[il] + nums[im] + nums[ir];
+            if (sum == 0) {
+                ret.push([nums[il], nums[im], nums[ir]]);
+                while (nums[im] == nums[im - 1]) im++;
+                while (nums[ir] == nums[ir + 1]) ir--;
+            } else if (sum < 0) while (nums[im] == nums[im - 1]) im++;
+            else if (sum > 0) while (nums[ir] == nums[ir + 1]) ir--;
         }
-        if (matrix[yi][c0]==true)matrix[yi][0]=0
     }
-}
+    return ret
+};

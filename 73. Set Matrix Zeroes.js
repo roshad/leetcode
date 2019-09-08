@@ -1,22 +1,15 @@
 function setZeroes(matrix) {
-    const
-        clen = matrix.length,
-        rlen = matrix[0].length
-    let c0 = false
-
-    for (let yi = 0; yi < clen; yi++) {
-        if (matrix[yi][0] == 0) c0 = true
-        for (let xi = 1; xi < rlen; xi++)
-            if (matrix[yi][xi] == 0)
-                matrix[yi][0] = matrix[0][xi] = 0
-
+    let c0=1,ylen=matrix.length,xlen=matrix[0].length
+    for (let y in matrix) {
+        if (matrix[y][0]==0) c0=0
+        for (let x=1;x<xlen;x++) {
+            if (matrix[y][x] == 0) matrix[0][x] = matrix[y][0] = 0;
+        }
     }
-
-    for (let yi = clen - 1; yi > -1; yi--) {
-        for (let xi = rlen - 1; xi > 0; xi--)
-            if (matrix[yi][0] == 0 || matrix[0][xi] == 0)
-                matrix[yi][xi] = 0
-
-        if (c0 == true) matrix[yi][0] = 0
-    }
+    for (let y=ylen-1;y>-1;y--){        
+        for (let x=xlen-1;x>0;x--){
+            if (matrix[0][x]==0||matrix[y][0]==0) matrix[y][x]=0    
+        }
+        if (c0==0)matrix[y][0]=0
+    }    
 }

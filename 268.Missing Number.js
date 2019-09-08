@@ -5,6 +5,6 @@ var missingNumber = function (nums) {
 
 var missingNumber = function (nums) {
     let r = nums.length
-    for (let i = 0; i < nums.length; i++) r ^= i ^ nums[i]
+    for (let i in nums) r ^= i ^ nums[i]
     return r
 };
