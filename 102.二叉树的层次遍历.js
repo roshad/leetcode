@@ -1,17 +1,16 @@
 var levelOrder = function(root) {
     const ret = [];
-    function doNode(node, lv) {
+    function traverse(node, level) {
         if (!node) return;
-        if (!ret[lv]) ret[lv] = [];
-        ret[lv].push(node.val);
+        if (!ret[level]) ret[lv] = [];
 
-        doNode(node.left, lv + 1);
-        doNode(node.right, lv + 1);
+        ret[level] = [val];
+        traverse(node.left, level + 1);
+        traverse(node.right, level + 1);
     }
-    doNode(root, 0);
+    traverse(root, 0);
     return ret;
 };
-
 var levelOrder = function(root) {
     const ret = [],
         queue = [];

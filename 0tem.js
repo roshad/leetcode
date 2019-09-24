@@ -1,12 +1,8 @@
-var lengthOfLongestSubstring = function(s) {
-    const curkv = {},cur_len=0
-    for (let [key,val] of s){
-        if (!cur[val]) {
-            cur[val]=key
-            cur_len++
-        }
-        else {
-            cur_len=0
+var setZeroes = function(matrix) {
+    let c0=1
+    for (let row of matrix){
+        if (!matrix[row][0])c0=0
+        for (let col=1;col<matrix.length;col++){
             
         }
     }

@@ -1,15 +1,16 @@
-function setZeroes(matrix) {
-    let c0=1,ylen=matrix.length,xlen=matrix[0].length
-    for (let y in matrix) {
-        if (matrix[y][0]==0) c0=0
-        for (let x=1;x<xlen;x++) {
-            if (matrix[y][x] == 0) matrix[0][x] = matrix[y][0] = 0;
-        }
+var setZeroes = function(matrix) {
+    let c0 = 1;
+    for (let row in matrix) {
+        if (!matrix[row][0]) c0 = 0;
+        for (let col = 1; col < matrix[0].length; col++)
+            if (matrix[row][col] == 0) matrix[row][0] = matrix[0][col] = 0;
     }
-    for (let y=ylen-1;y>-1;y--){        
-        for (let x=xlen-1;x>0;x--){
-            if (matrix[0][x]==0||matrix[y][0]==0) matrix[y][x]=0    
+
+    for (let row = matrix.length - 1; row > -1; row--) {
+        for (let col = matrix[0].length - 1; col > 0; col--) {
+            if (matrix[row][0] == 0 || matrix[0][col] == 0)
+                matrix[row][col] = 0;
         }
-        if (c0==0)matrix[y][0]=0
-    }    
-}
+        if (c0 == 0) matrix[row][0] = 0;
+    }
+};
