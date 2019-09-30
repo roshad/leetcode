@@ -56,44 +56,27 @@ var longestPalindrome = function(s) {
 };
 //manacher
 function longestPalindrome(s) {
-    function preProcess(s) {
-        let processed = "";
-        for (let cha of s) processed += "#" + cha;
-        return "^" + processed + "#*";
-    }
-    const processed = preProcess(s);
-
-    function getRad() {
-        let p_len = processed.length;
-        const mem_rad = new Array(processed.length).fill(0);
-        let r_bound = 0,
-            center_ind = 0;
-        for (let i = 1; i < p_len - 1; i++) {
-            mirror_ind = 2 * center_ind - i;
-            if (r_bound > i)
-                mem_rad[i] = Math.min(mem_rad[mirror_ind], r_bound - i);
-
-            while (
-                processed.charAt(i - mem_rad[i] - 1) ===
-                processed.charAt(i + mem_rad[i] + 1)
-            )
-                mem_rad[i]++;
-
-            if (i + mem_rad[i] > r_bound) {
-                r_bound = i + mem_rad[i];
-                center_ind = i;
-            }
+    let pS = "^#";
+    for (let cha of s) pS += cha + "#";
+    pS += "*";
+    const radList = new Array(pS.length).fill(0);
+    let pldRB = 0,
+        pldC = 0,
+        maxC = 0,
+        maxRad = 0;
+    for (let ind = 2; ind < pS.length - 2; ind++) {
+        radList[ind] = Math.min(radList[2 * pldC - ind] || 0, pldRB - ind);
+        while (pS[ind + radList[ind] + 1] == pS[ind - radList[ind] - 1])
+            radList[ind]++;
+        if (radList[ind] + ind > pldRB) {
+            pldRB = ind + radList[ind];
+            pldC = ind;
         }
-        return mem_rad;
-    }
-    const radList = getRad();
-    let max_rad = 0;
-    for (let i in radList) {
-        if (radList[i] > max_rad) {
-            center_ind = i;
-            max_rad = radList[i];
+        if (radList[ind] > maxRad) {
+            maxRad = radList[ind];
+            maxC = ind;
         }
     }
-    const start = Math.floor((center_ind - max_rad) / 2);
-    return s.substring(start, start + max_rad);
+    const start = Math.floor((maxC - maxRad) / 2);
+    return s.substring(start, start + maxRad);
 }
