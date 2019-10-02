@@ -1,12 +1,11 @@
-var isValidBST = function(
+var isValidBST = (
     node,
-    low = Number.MIN_SAFE_INTEGER,
-    up = Number.MAX_SAFE_INTEGER
-) {
-    return !node
+    lB = Number.MIN_SAFE_INTEGER,
+    uB = Number.MAX_SAFE_INTEGER
+) =>
+    !node
         ? true
-        : node.val > low &&
-              node.val < up &&
-              isValidBST(node.left, low, node.val) &&
-              isValidBST(node.right, node.val, up);
-};
+        : node.val > lB &&
+          node.val < uB &&
+          isValidBST(node.right, node.val, uB) &&
+          isValidBST(node.left, lB, node.val);
