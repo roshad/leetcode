@@ -55,28 +55,27 @@ var longestPalindrome = function(s) {
     return s.substr(sta, max);
 };
 //manacher
-function longestPalindrome(s) {
-    let pS = "^#";
+var longestPalindrome = function(s) {
+    let pS = "$#";
     for (let cha of s) pS += cha + "#";
-    pS += "*";
+    pS += "^";
     const radList = new Array(pS.length).fill(0);
-    let pldRB = 0,
-        pldC = 0,
-        maxC = 0,
-        maxRad = 0;
-    for (let ind = 2; ind < pS.length - 2; ind++) {
-        radList[ind] = Math.min(radList[2 * pldC - ind] || 0, pldRB - ind);
-        while (pS[ind + radList[ind] + 1] == pS[ind - radList[ind] - 1])
-            radList[ind]++;
-        if (radList[ind] + ind > pldRB) {
-            pldRB = ind + radList[ind];
-            pldC = ind;
+    let cen = 0,
+        rB = 0,
+        cMax = 0,
+        radMax = 0;
+    for (let i = 2; i < pS.length - 2; i++) {
+        radList[i] = Math.min(radList[cen * 2 - i] || 0, Math.max(rB - i, 0));
+        while (pS[i + radList[i] + 1] == pS[i - radList[i] - 1]) radList[i]++;
+        if (i + radList[i] > rB) {
+            rB = i + radList[i];
+            cen = i;
         }
-        if (radList[ind] > maxRad) {
-            maxRad = radList[ind];
-            maxC = ind;
+        if (radList[i] > radMax) {
+            radMax = radList[i];
+            cMax = i;
         }
     }
-    const start = Math.floor((maxC - maxRad) / 2);
-    return s.substring(start, start + maxRad);
-}
+    const sta = Math.floor((cMax - radMax) / 2);
+    return s.substring(sta, sta + radMax);
+};
