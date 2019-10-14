@@ -42,14 +42,13 @@ var isValidSudoku = function(board) {
         }
         return true;
     }
-
     return (
         tra((i1, i2) => board[i1][i2]) &&
         tra((i1, i2) => board[i2][i1]) &&
         tra(
             (i1, i2) =>
                 board[3 * Math.floor(i1 / 3) + Math.floor(i2 / 3)][
-                    3 * (i1 % 3) + (i2 % 3)
+                    (i1 % 3) * 3 + (i2 % 3)
                 ]
         )
     );

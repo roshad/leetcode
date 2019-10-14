@@ -29,7 +29,6 @@ var groupAnagrams = function(strs) {
             103
         ],
         ht = {};
-
     for (const str of strs) {
         let hash = 1;
         for (const cha of str)

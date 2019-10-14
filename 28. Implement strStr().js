@@ -1,22 +1,18 @@
 //sunday
-function strStr(haystack, needle) {
-    if (!needle.length) return 0;
-    const hay_len = haystack.length,
-        nee_len = needle.length;
-    let nee_head_ind = 0;
-    const last = {}
-    for (let i=0;i<nee_len;i++)
-        last[needle[i]]=nee_len-i
-    while (nee_head_ind <= hay_len - nee_len) {
-        nee_ind = 0;
-        while (
-            haystack[nee_head_ind + nee_ind] ==
-            needle[nee_ind]
-        ) {
-            nee_ind++;
-            if (nee_ind == nee_len) return nee_head_ind;
-        }
-        nee_head_ind += last[haystack[nee_head_ind + nee_len]]||nee_len;
+var strStr = function(haystack, needle) {
+    const [hL, nL] = [haystack.length, needle.length],
+        move = {};
+    for (let i = 0; i < nL; i++) move[needle[i]] = nL - i;
+    //console.log(move)
+    for (
+        let nee_head_ind = 0;
+        nee_head_ind <= hL - nL;
+        nee_head_ind += move[haystack[nee_head_ind + nL]] || nL + 1
+    ) {
+        for (nee_tra_i = 0;; nee_tra_i++) {
+            if (nee_tra_i == nL) return nee_head_ind;
+            if (haystack[nee_tra_i + nee_head_ind] != needle[nee_tra_i]) break;
+        }        
     }
     return -1;
-}
+};

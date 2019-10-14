@@ -1,7 +1,7 @@
 var isValidBST = (
     node,
-    lB = Number.MIN_SAFE_INTEGER,
-    uB = Number.MAX_SAFE_INTEGER
+    lB = -Infinity,
+    uB = Infinity
 ) =>
     !node
         ? true
