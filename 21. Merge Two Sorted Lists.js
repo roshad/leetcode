@@ -6,12 +6,14 @@ var mergeTwoLists = function(l1, l2) {
 };
 
 var mergeTwoLists = function(l1, l2) {
-    let node = new ListNode(),head=node
-    while (l1) {
-        if (l1.val > l2.val) [l1, l2] = [l2, l1];
-        node = node.next = l1;
-        l1 = l1.next;
+    if (!l2)return l1
+    const head=new ListNode();
+    let pointer=head
+    while (l1){
+        if (l1.val>l2.val) [l1,l2]=[l2,l1]
+        pointer=pointer.next=l1
+        l1=l1.next
     }
-    node.next = l2;
-    return head.next;
+    pointer.next=l2
+    return head.next
 };
