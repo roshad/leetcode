@@ -1,34 +1,31 @@
-//三指针操作
-//使一变化只能以一针的变化实现
 var threeSum = function(nums) {
-    if (nums.length < 3) return [];
-    nums.sort((a, b) => a - b);
-    let ret = [],
-        len = nums.length;
-    for (let il = 0; il < len - 2; ) {
-        if (nums[i] > 0) return ret;
-        for (let im = il + 1, ir = len - 1; im < ir; ) {
-            let sum = nums[il] + nums[im] + nums[ir];
-            if (sum == 0) {
-                ret.push([nums[il], nums[im], nums[ir]]);
-                do {
-                    im++;
-                } while (nums[im] == nums[im - 1]);
-                do {
-                    ir--;
-                } while (nums[ir] == nums[ir + 1]);
-            } else if (sum < 0)
-                do {
-                    im++;
-                } while (nums[im] == nums[im - 1]);
-            else if (sum > 0)
-                do {
-                    ir--;
-                } while (nums[ir] == nums[ir + 1]);
-        }
+  nums.sort((a, b) => a - b);
+  const ret = [];
+  for (let il = 0; il < nums.length - 2; ) {
+    for (let im = il + 1, ir = nums.length - 1; im < ir; ) {
+      if (nums[il] + nums[im] > 0) break;
+      const sum = nums[il] + nums[im] + nums[ir];
+      if (sum == 0) {
+        ret.push([nums[il], nums[im], nums[ir]]);
         do {
-            il++;
-        } while (nums[il] == nums[il - 1]);
+          im++;
+        } while (nums[im] == nums[im - 1]);
+        do {
+          ir--;
+        } while (nums[ir] == nums[ir + 1]);
+      } else if (sum < 0) {
+        do {
+          im++;
+        } while (nums[im] == nums[im - 1]);
+      } else if (sum > 0) {
+        do {
+          ir--;
+        } while (nums[ir] == nums[ir + 1]);
+      }
     }
-    return ret;
+    do {
+      il++;
+    } while (nums[il] == nums[il - 1]);
+  }
+  return ret;
 };
