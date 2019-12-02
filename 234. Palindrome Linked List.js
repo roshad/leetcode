@@ -10,27 +10,26 @@ var isPalindrome = function(head) {
 };
 
 var isPalindrome = function(head) {
-  let fast = head,
-    slow = head;
-  while (fast && fast.next) {
-    slow = slow.next;
-    fast = fast.next.next;
+  let slow=head,fast=head
+  while (fast&&fast.next){
+      slow=slow.next
+      fast=fast.next.next
   }
-  if (fast) slow = slow.next;
-  let left = null,
-    mid = slow,
-    right;
-  while (mid) {
-    right = mid.next;
-    mid.next = left;
-    left = mid;
-    mid = right;
+  if (fast)slow=slow.next
+  
+  let left=null,mid=slow
+  while (mid){
+      const right=mid.next
+      mid.next=left
+      left=mid
+      mid=right
   }
-  let foot = left;
-  while (head && foot) {
-    if (head.val != foot.val) return false;
-    foot = foot.next;
-    head = head.next;
-  }
-  return true;
+
+  let tail=left
+  while (tail&&head){
+      if (tail.val!=head.val)return false
+      tail=tail.next
+      head=head.next
+  }       
+  return true
 };

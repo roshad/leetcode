@@ -17,7 +17,7 @@ function rotate(nums, k) {
         } while (i_cur != i_sta)
     }
 }
-
+3.1
 function rotate(nums, k) {
     k %= nums.length
     reverse(0, nums.length - 1)
@@ -31,4 +31,6 @@ function rotate(nums, k) {
         }
     }
 }
+3.2
+var rotate = (nums, k)=> nums.unshift(...nums.splice(nums.length-k))
 

@@ -1,10 +1,9 @@
 var increasingTriplet = function(nums) {
-    let n1 = Number.MAX_SAFE_INTEGER,
-        n2 = n1;
-    for (const num of nums) {
-        if (num <= n1) n1 = num * 1; 
-        else if (num <= n2) n2 = num * 1;
-        else return true;
-    }
-    return false;
+  for (let i = 0, small = Infinity, mid = Infinity; i < nums.length; i++) {
+    const cur_num = nums[i];
+    if (cur_num <= small) small = cur_num;
+    else if (cur_num <= mid) mid = cur_num;
+    else return true;
+  }
+  return false;
 };
