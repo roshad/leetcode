@@ -9,20 +9,16 @@ var isSymmetric = function(Lnode, Rnode = Lnode) {
     );
 };
 
-var isSymmetric = function(Lnode, Rnode = Lnode) {
-    let que = [];
-    que.unshift(Lnode, Rnode);
-
-    while (que.length) {        
-        let n1 = que.shift(),
-            n2 = que.shift();
-        if (n1 == null && n2 == null) continue;
-        if (n1 == null || n2 == null) return false;
-        if (!(n1.val == n2.val)) return false;
-        que.unshift(n1.left);
-        que.unshift(n2.right);
-        que.unshift(n1.right);
-        que.unshift(n2.left);
+var isSymmetric = function(root) {
+    const container=[]
+    container.push(root,root)
+    while (container.length){
+        const n1=container.pop(),
+        n2=container.pop()
+        if (!n1&&!n2)continue
+        else if (!n1||!n2)return false
+        else if (n1.val!=n2.val)return false
+        container.push(n1.left,n2.right,n1.right,n2.left)        
     }
     return true
 };
