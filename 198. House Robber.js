@@ -1,6 +1,3 @@
-
-
-
 var rob = function(nums) {
     const len=nums.length
     for (let i=2;i<len;i++)

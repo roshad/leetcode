@@ -10,15 +10,14 @@ var isSymmetric = function(Lnode, Rnode = Lnode) {
 };
 
 var isSymmetric = function(root) {
-    const container=[]
-    container.push(root,root)
-    while (container.length){
-        const n1=container.pop(),
-        n2=container.pop()
-        if (!n1&&!n2)continue
-        else if (!n1||!n2)return false
-        else if (n1.val!=n2.val)return false
-        container.push(n1.left,n2.right,n1.right,n2.left)        
+    if (!root) return true
+    const arr = [root.left,root.right]
+    while (arr.length){
+        const n1=arr.shift(),n2=arr.shift()
+        if (!n1 &&!n2)continue
+        if (!(n1&&n2) && (n1||n2)) return false        
+        if (n1.val !=n2.val)return false
+        arr.push(n1.left,n2.right,n1.right,n2.left)        
     }
     return true
 };

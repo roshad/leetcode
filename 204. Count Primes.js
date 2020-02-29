@@ -1,11 +1,11 @@
 var countPrimes = function(n) {
-    const notPrime = new Array(n)
-    let amount=0
-    for (let i=2;i<n;i++){
-        if (!notPrime[i]) {            
-            amount++
-            for (let times=2;times*i<n;times++) notPrime[times*i]=1
-        }
-    }
-    return amount
+  let count=0,notPrime= new Array(n)
+  for (let num=2;num<n;num++){
+      if (!notPrime[num]){
+          count++
+          for (let time=num;time*num<n;time++)
+              notPrime[time*num]=true          
+      }
+  }
+  return count
 };

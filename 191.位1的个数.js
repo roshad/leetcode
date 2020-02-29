@@ -8,10 +8,10 @@ var hammingWeight = function(n) {
 };
 // bit
 var hammingWeight = function(n) {
-    let ret =0    
-    while(n){        
-        ret++
-        n&=n-1
+    let count=0
+    while (n){
+        if (n&1) count++
+        n>>>=1        
     }
-    return ret
+    return count
 };
