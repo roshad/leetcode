@@ -1,4 +1,15 @@
 var hasCycle = function (head) {
+    let fast=head,slow=head
+    do {
+        if (!fast||!fast.next) return false
+        fast=fast.next.next
+        slow=slow.next
+    }
+    while (fast!=slow)
+    return true
+}
+
+var hasCycle = function (head) {
     let nodesSeen = new Set()
 
     while (head) {
@@ -9,13 +20,3 @@ var hasCycle = function (head) {
     return false;
 };
 
-var hasCycle = function (head) {
-    let fast=head,slow=head
-    do {
-        if (!fast||!fast.next) return false
-        fast=fast.next.next
-        slow=slow.next
-    }
-    while (fast!=slow)
-    return true
-}

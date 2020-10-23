@@ -1,0 +1,7 @@
+var strStr = function(haystack, needle) {
+  const getNum=(ind,str)=>str.charCodeAt(ind)-"a".charCodeAt(0),
+  hL=haystack.length,nL= needle.length;
+  if (nL>hL)return -1
+  for (let i=0;i<)
+
+};

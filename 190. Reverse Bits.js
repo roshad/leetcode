@@ -1,9 +1,10 @@
 var reverseBits = function (n) {
     let count =32,ret=0
     while (count--){
-        ret<<=1 ////第32位写入后不需要移,故而摆到写入之前,无效化一次移动
+        ret<<=1 
         ret+=n&1              
         n>>=1        
     }
+    //写入,移的操作只能进行31次,否则最前会被消除,所以移写入
     return ret >>>0
 }
