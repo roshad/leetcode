@@ -25,3 +25,13 @@ Solution.prototype.shuffle = function() {
     }
     return nums;
 };
+//错解 第一次取不可能取到最后一个 无法通过第六测
+Solution.prototype.shuffle = function() {
+    this.cur=this.ori.slice() 
+    const len=this.cur.length
+    for (let i=0;i<len;i++){
+        const pick=i+Math.floor(Math.random()*(len-i-1));
+        [this.cur[i],this.cur[pick]]=[this.cur[pick],this.cur[i]]
+    }
+    return this.cur
+};

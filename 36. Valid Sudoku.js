@@ -1,4 +1,4 @@
-//3个for要合并，就需要3个set
+
 var isValidSudoku = function(board) {
     let rep, num;
     for (i = 0; i < 9; i++) {
