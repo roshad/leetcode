@@ -1,4 +1,4 @@
-var groupAnagrams = function(strs) {
+var groupAnagrams = function (strs) {
   const primes = [
       2,
       3,
@@ -25,7 +25,7 @@ var groupAnagrams = function(strs) {
       89,
       97,
       101,
-      103
+      103,
     ],
     ht = {};
   for (const str of strs) {
@@ -35,4 +35,19 @@ var groupAnagrams = function(strs) {
     ht[hash] = ht[hash] ? [...ht[hash], str] : [str];
   }
   return Object.values(ht);
+};
+//不取模的话，str很长会溢出
+//如取模，str够多会重复，故此解法错误
+var groupAnagrams = function(strs) {
+  const groups={}
+  for (let str of strs){
+      const chaCount=new Array(26).fill(0)
+      for (let cha of str){
+          chaCount[cha.charCodeAt(0)-"a".charCodeAt(0)]++
+      }
+      groups[chaCount]?groups[chaCount].push(str):groups[chaCount]=[str]
+  }
+  
+  return Object.values(groups)
+
 };

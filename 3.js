@@ -33,3 +33,19 @@ var lengthOfLongestSubstring = function (s) {
 
   return maxLen;
 };
+
+var lengthOfLongestSubstring = function(s) {
+  const chaIndMap={}
+  let maxLen=0
+  for (let i=0,sta=0;i<s.length;i++){
+      let preInd=chaIndMap[s[i]]
+      if (preInd!==undefined){
+          sta=sta>preInd?sta:preInd+1
+      }
+      if (maxLen<i-sta+1)maxLen=i-sta+1
+      
+      chaIndMap[s[i]]=i
+  }
+  return maxLen
+};
+//需要一个个去移除重合字符之前的，比较麻烦

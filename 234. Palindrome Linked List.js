@@ -33,3 +33,22 @@ var isPalindrome = function(head) {
   }       
   return true
 };
+//到尾与转向合并 复杂度没什么差异
+var isPalindrome = function(head) {
+  let fast=head,slow=head,preSlow=null
+  
+  while (fast&&fast.next){
+      fast=fast.next.next       
+      let nextSlow=slow.next; 
+      slow.next=preSlow;
+      preSlow=slow;
+      slow=nextSlow;
+  }
+  if (fast)slow=slow.next
+  let left=preSlow,right=slow
+  while (left&&right){
+      if (left.val!==right.val)return false
+      left=left.next;right=right.next
+  }
+  return true
+};
