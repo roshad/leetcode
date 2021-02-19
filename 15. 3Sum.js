@@ -1,4 +1,20 @@
-var threeSum = function(nums) {
+var threeSum = function (nums) {
+  nums.sort((a, b) => a - b);
+  const ret = [];
+  for (let il = 0; il < nums.length - 2; il++) {
+    if (nums[il] == nums[il - 1]) continue;
+    for (let im = il + 1, ir = nums.length - 1; im < ir; im++) {
+      if (nums[im] == nums[im - 1] && im > il + 1) continue;
+      const wanted_numR = 0 - nums[il] - nums[im];
+      while (nums[ir] > wanted_numR && im < ir - 1) ir--;
+      if (nums[ir] == wanted_numR) ret.push([nums[il], nums[im], nums[ir]]);
+      continue;
+    }
+  }
+  return ret;
+};
+
+var threeSum = function (nums) {
   nums.sort((a, b) => a - b);
   const ret = [];
   for (let il = 0; il < nums.length - 2; ) {
@@ -9,10 +25,10 @@ var threeSum = function(nums) {
         ret.push([nums[il], nums[im], nums[ir]]);
         do {
           im++;
-        } while (nums[im] == nums[im - 1]);
+        } while (nums[im] == nums[im - 1]); //放到for里，用continue替代
         do {
           ir--;
-        } while (nums[ir] == nums[ir + 1]);
+        } while (nums[ir] == nums[ir + 1]); //这里没必要这么麻烦，使中不同，已经避免了重复，不需要再使右不同
       } else if (sum < 0) {
         do {
           im++;
@@ -20,7 +36,7 @@ var threeSum = function(nums) {
       } else if (sum > 0) {
         do {
           ir--;
-        } while (nums[ir] == nums[ir + 1]);
+        } while (nums[ir] == nums[ir + 1]); //do while 重复，放到for里
       }
     }
     do {
