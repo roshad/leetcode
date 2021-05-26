@@ -18,11 +18,16 @@ var strStr = function (haystack, needle) {
 };
 //Rabin Karp n
 // 算出hash，移动时减一个加一个
+//有哈希就会有碰撞，完事后比对str 
+//"bbbbbbbbbbbbbbbbbbbbbbbb"
+//"bbbbbbbbbbbbbbbbbhzujtzz"
+
 var strStr = function (haystack, needle) {
   const nL = needle.length,
     prime = 26,
     modulus = Math.pow(2, 31), //26是>25的最小素数，mod之后为何不会重复，证明不了
     chaToNum = (cha) => cha.charCodeAt(0) - "a".charCodeAt(0);
+  
   if (nL > haystack.length) return -1; //无此会在第一个for就变成NaN，但一直计算下去
   let hash_needle = 0,
     hash_cur = 0,
@@ -32,7 +37,7 @@ var strStr = function (haystack, needle) {
     hash_cur = (hash_cur * prime + chaToNum(haystack[i])) % modulus;
     prevProcess = (prevProcess * prime) % modulus;//减去第一个，乘了很多次的 | 第一次没有乘，但下面用到是多乘了一次的
   }
-  if (hash_cur == hash_needle) return 0;
+  if (hash_cur == hash_needle && haystack.slice(0,nL)==needle) return 0;
   for (let i = 1; i <= haystack.length - nL; i++) {
     hash_cur =
       (hash_cur * prime -
@@ -40,7 +45,7 @@ var strStr = function (haystack, needle) {
         chaToNum(haystack[i + nL - 1])) %
       modulus;
 
-    if (hash_cur == hash_needle) return i;
+    if (hash_cur == hash_needle && haystack.slice(i,i+nL)==needle) return i;
   }
   return -1;
 };

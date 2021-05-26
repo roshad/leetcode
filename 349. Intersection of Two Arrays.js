@@ -1,3 +1,9 @@
+// 1转为set n
+// tra 2 n，
+// has n
+// 就加入set2，
+// ret arr set2 n
+
 var intersection = function(nums1, nums2) {
     var set = new Set(nums1),
         ret = new Set();
@@ -6,7 +12,7 @@ var intersection = function(nums1, nums2) {
 
     return Array.from(ret);
 };
-
+//排序+双指针优势在空间
 var intersection = function(nums1, nums2) {
     const aa1 = {},
         ret = [];
