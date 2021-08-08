@@ -10,7 +10,7 @@ var increasingTriplet = function (nums) {
 //我写的
 var increasingTriplet = function (nums) {
   for (let l, m, i = 0; i < nums.length; i++) {
-    if (l === undefined || nums[i] < l) {//infinity避免去查und  =避免比small
+    if (l === undefined || nums[i] < l) {//infinity避免去查und  =避免在之后比small
       l = nums[i];
     } else if (
       (m === undefined && nums[i] > l) ||

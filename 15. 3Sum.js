@@ -1,19 +1,19 @@
 var threeSum = function (nums) {
   nums.sort((a, b) => a - b);
-  const ret = [];
-  for (let il = 0; il < nums.length - 2; il++) {
-    if (nums[il] == nums[il - 1]) continue;
-    for (let im = il + 1, ir = nums.length - 1; im < ir; im++) {
-      if (nums[im] == nums[im - 1] && im > il + 1) continue;
-      const wanted_numR = 0 - nums[il] - nums[im];
-      while (nums[ir] > wanted_numR && im < ir - 1) ir--;
-      if (nums[ir] == wanted_numR) ret.push([nums[il], nums[im], nums[ir]]);
-      continue;
+  const len = nums.length,
+    ret = [];
+  for (let l = 0; l < len - 2; l++) {
+    if (nums[l] === nums[l - 1]) continue;
+    const sum = () => nums[l] + nums[m] + nums[r];
+    for (let m = l + 1, r = len - 1; m < r; m++) {
+      if (m > l + 1 && nums[m] == nums[m - 1]) continue;
+      if (sum() < 0) continue;
+      while (sum() > 0 && m < r - 1) r--;
+      if (sum() == 0) ret.push([nums[l], nums[m], nums[r]]);
     }
   }
   return ret;
 };
-
 var threeSum = function (nums) {
   nums.sort((a, b) => a - b);
   const ret = [];
