@@ -1,3 +1,4 @@
+//左代表一队，中代表一队。左换了，就是另一个只有1个的队
 var increasingTriplet = function (nums) {
   for (let i = 0, small = Infinity, mid = Infinity; i < nums.length; i++) {
     const cur = nums[i];

@@ -18,7 +18,7 @@ function rotate(nums, k) {
         } while (i_cur != i_sta)
     }
 }
-翻转
+//翻转
 function rotate(nums, k) {
     k %= nums.length
     reverse(0, nums.length - 1)
@@ -32,6 +32,6 @@ function rotate(nums, k) {
         }
     }
 }
-剪贴
+//剪贴  concat创新array,所以不行
 var rotate = (nums, k)=> nums.unshift(...nums.splice(nums.length-k))
 

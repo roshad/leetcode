@@ -1,17 +1,9 @@
-//当前数的1数，等于去掉1个1之后的数的量+1.
-// 比当前数x比特位少1的数x&(x-1)
-var countBits = function (n) {
-  function getBits(n) {
-    let ret = 0;
-    while (n) {
-      n &= n - 1;
-      ret++;
-    }
-    return ret;
+
+
+var countBits = function(n) {
+  const bits = new Array(n + 1).fill(0);
+  for (let i = 1; i <= n; i++) {
+      bits[i] = bits[i & (i - 1)] + 1;//等于去掉个1后的数 的量+1.
   }
-  let ret = [];
-  for (let i = 0; i <= n; i++) {
-    ret.push(getBits(i));
-  }
-  return ret;
+  return bits;
 };

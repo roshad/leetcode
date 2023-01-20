@@ -22,7 +22,10 @@ var groupAnagrams = function (strs) {
       chaCount[cha.charCodeAt(0) - "a".charCodeAt(0)]++;
     }
     groups[chaCount] ? groups[chaCount].push(str) : (groups[chaCount] = [str]);
+    // 另一种写法 ret[chaAmount]=[...ret[chaAmount]||[],str]
+    // array作key自动转化为string,所有set转化为相同string
   }
 
   return Object.values(groups);
 };
+

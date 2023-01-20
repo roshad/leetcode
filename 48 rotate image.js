@@ -1,3 +1,4 @@
+//画图，标i,j的移动方向
 var rotate = function (matrix) {
   const len = matrix.length,
     max_ind = len - 1;
