@@ -24,7 +24,7 @@ var moveZeroes = function (nums) {
     next_zero()
     //console.log(nums)
 };
-//2
+//2 指针指零，指针找非零写入零位，找针到底后指零针写入0.
 var moveZeroes = function(nums) {
     let slotI=0,readerI=0
     while (readerI<nums.length){
@@ -33,3 +33,4 @@ var moveZeroes = function(nums) {
     }
     while (slotI<nums.length)nums[slotI++]=0    
 };
+// 指针指零，指针找非零，找到换位。
