@@ -12,7 +12,7 @@ var countPrimes = function(n) {
 };
 //现行筛 空间n 时间n 仅最小质因数标记一次
 //例如4如果继续*3，那么被标记的12就有>2的质因数了。
-
+// && i * primes[j] < n没这一个，primes就会过大，导致out of memory
 var countPrimes = function(n) {
     const isPrime = new Array(n).fill(1);
     const primes = [];
