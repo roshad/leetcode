@@ -10,7 +10,9 @@ var countPrimes = function(n) {
   }
   return count
 };
- //如果 x 可以被 primes[j]​整除，那么对于合数 y=x⋅primes[ j+1] ​ 而言，它会在后面遍历到​ x/primes[j] ⋅primes[j+1] ​ 这个数的时候会被标记，其他同理，这保证了每个合数只会被其「最小质因数」筛去一次。
+//现行筛 空间n 时间n 仅最小质因数标记一次
+//例如4如果继续*3，那么被标记的12就有>2的质因数了。
+
 var countPrimes = function(n) {
     const isPrime = new Array(n).fill(1);
     const primes = [];
