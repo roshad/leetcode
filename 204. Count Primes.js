@@ -23,7 +23,8 @@ var countPrimes = function(n) {
         }
         for (let j = 0; j < primes.length && i * primes[j] < n; ++j) { // && i * primes[j] < n没有，isPrime就会增大，导致out of memory
             isPrime[i * primes[j]] = 0;
-            if (i % primes[j] === 0) break //不break，就被多数标记 例如12*2标记24，不退出，36本应只被18*2标记一次的，就被标记多次
+            if (i % primes[j] === 0) break 
+          //比如4，能被2整除，那么他的倍数，最小质因数就不会是比2大的数 例如12*2标记24，不退出，就会标记12*3，而12*3本应只被18*2标记一次的
             
         }
     }
