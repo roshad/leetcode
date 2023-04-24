@@ -10,9 +10,9 @@ var countPrimes = function(n) {
   }
   return count
 };
-//现行筛 空间n 时间n 仅最小质因数标记一次
-//例如4如果继续*3，那么被标记的12就有>2的质因数了。
-// && i * primes[j] < n没这一个，primes就会过大，导致out of memory
+//线性筛 空间n 时间n 仅最小质因数标记一次
+
+
 var countPrimes = function(n) {
     const isPrime = new Array(n).fill(1);
     const primes = [];
@@ -21,11 +21,10 @@ var countPrimes = function(n) {
         if (isPrime[i]) {
             primes.push(i);
         }
-        for (let j = 0; j < primes.length && i * primes[j] < n; ++j) {
+        for (let j = 0; j < primes.length && i * primes[j] < n; ++j) { // && i * primes[j] < n没有，isPrime就会增大，导致out of memory
             isPrime[i * primes[j]] = 0;
-            if (i % primes[j] === 0) {
-                break;
-            }
+            if (i % primes[j] === 0) break //不break，就被多数标记 例如12*2标记24，不退出，36本应只被18*2标记一次的，就被标记多次
+            
         }
     }
     return primes.length;
