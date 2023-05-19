@@ -1,4 +1,4 @@
-旋转
+//旋转
 function rotate(nums, k) {
     let
         i_sta = -1,
